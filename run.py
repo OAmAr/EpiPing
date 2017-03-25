@@ -1,7 +1,7 @@
 from sendsms import sendmessage
 from config import data
 import RPI.GPIO as GPIO
-
+import time 
 def main():
     pin = 23
     GPIO.setmode(GPIO.BCM)
@@ -12,6 +12,10 @@ def main():
           data["Message"],
           data["Location"])
     while not GPIO.input(pin):
-        sleep(1)
+        time.sleep(1)
+
     sendmessage(data["Emergency Contact Number"], message)
 
+
+if __name__=="__main__":
+    main()
